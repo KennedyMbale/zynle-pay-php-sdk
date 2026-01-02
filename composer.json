@@ -3,8 +3,7 @@
     "description": "Professional PHP SDK for ZynlePay payment gateway API supporting MOMO and Card payments in Zambia.",
     "type": "library",
     "license": "MIT",
-    "version": "4.2.0",
-    "minimum-stability": "stable",
+    "version": "1.0.0",
     "keywords": ["zynlepay", "payment", "gateway", "momo", "card", "php", "sdk", "Zambia"],
     "authors": [
         {

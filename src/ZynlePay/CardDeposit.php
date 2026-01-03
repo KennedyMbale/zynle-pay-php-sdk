@@ -29,7 +29,10 @@ class CardDeposit
         string $city,
         string $state,
         string $zip_code = '10101',
-        string $country = 'Zambia'
+        string $country = 'Zambia',
+        ?string $callbackUrl = null,
+        ?string $successUrl = null,
+        ?string $failUrl = null
     ): array {
         $data = [
             'method' => 'runTranAuthCapture',
@@ -55,6 +58,16 @@ class CardDeposit
             'zip_code' => $zip_code,
             'country' => $country,
         ];
+
+        if ($callbackUrl !== null) {
+            $data['callback_url'] = $callbackUrl;
+        }
+        if ($successUrl !== null) {
+            $data['success_url'] = $successUrl;
+        }
+        if ($failUrl !== null) {
+            $data['fail_url'] = $failUrl;
+        }
 
         return $this->client->request('POST', $data)['response'];
     }

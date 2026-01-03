@@ -247,7 +247,7 @@ try {
 
 ### WalletToBank Methods
 
-- `runPayToBank(string $referenceNo, float $amount, string $description = 'Bank Transfer', string $bankName = '', string $receiverId = ''): array`
+- `runPayToBank(string $referenceNo, float $amount, string $description = 'Bank Transfer', string $bankName = '', string $receiverId = '', ?string $callbackUrl = null, ?string $successUrl = null, ?string $failUrl = null): array`
 - `checkBankTransferStatus(string $referenceNo): array`
 
 ### MomoWithdraw Methods

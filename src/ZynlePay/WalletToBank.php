@@ -18,6 +18,9 @@ class WalletToBank
     /**
      * Process a bank transfer payment
      *
+     * @param string $callbackUrl Optional callback URL for payment notifications
+     * @param string $successUrl Optional success URL for user redirect after successful payment
+     * @param string $failUrl Optional fail URL for user redirect after failed payment
      * @throws ApiException
      */
     public function runPayToBank(
@@ -25,7 +28,10 @@ class WalletToBank
         float $amount,
         string $description,
         string $bankName,
-        string $receiverId
+        string $receiverId,
+        ?string $callbackUrl = null,
+        ?string $successUrl = null,
+        ?string $failUrl = null
     ): array {
         $data = [
             'method' => 'runPayToBank',
@@ -37,7 +43,17 @@ class WalletToBank
             'request_id' => uniqid('bank_', true),
         ];
 
-        return $this->client->request('POST', $data);
+        if ($callbackUrl !== null) {
+            $data['callback_url'] = $callbackUrl;
+        }
+        if ($successUrl !== null) {
+            $data['success_url'] = $successUrl;
+        }
+        if ($failUrl !== null) {
+            $data['fail_url'] = $failUrl;
+        }
+
+        return $this->client->request('POST', $data)['response'];
     }
 
     /**

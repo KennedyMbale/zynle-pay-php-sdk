@@ -31,7 +31,7 @@ class CheckBalanceTest extends TestCase
     {
         $expectedResponse = [
             'balance' => 1500.00,
-            'currency' => 'USD',
+            'currency' => 'ZMW',
             'available_balance' => 1450.00
         ];
 
@@ -51,7 +51,7 @@ class CheckBalanceTest extends TestCase
     {
         $expectedResponse = [
             'balance' => 0.00,
-            'currency' => 'USD',
+            'currency' => 'ZMW',
             'available_balance' => 0.00
         ];
 

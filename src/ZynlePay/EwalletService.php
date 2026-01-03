@@ -48,7 +48,7 @@ class EwalletService
             'amount' => $amount
         ];
 
-        return $this->client->request('POST', $data);
+        return $this->client->request('POST', $data)['response'];
     }
 
     /**
@@ -70,6 +70,6 @@ class EwalletService
             'reference_no' => $referenceNo
         ];
 
-        return $this->client->request('POST', $data);
+        return $this->client->request('POST', $data)['response'];
     }
 }

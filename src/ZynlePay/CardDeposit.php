@@ -18,18 +18,18 @@ class CardDeposit
         string $expiryMonth,
         string $expiryYear,
         string $cvv,
-        string $nameOnCard = 'Zynle Test',
-        string $description = 'test',
+        string $nameOnCard,
+        string $description,
         string $currency = 'ZMW',
-        string $firstName = 'Zynle',
-        string $lastName = 'Test',
-        string $address = 'Lusaka',
+        string $firstName,
+        string $lastName,
+        string $address,
         string $email,
         string $phone,
-        string $city = 'Lusaka',
-        string $state = 'Lusaka',
+        string $city,
+        string $state,
         string $zip_code = '10101',
-        string $country = 'ZMB'
+        string $country = 'Zambia'
     ): array {
         $data = [
             'method' => 'runTranAuthCapture',

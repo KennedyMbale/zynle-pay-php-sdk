@@ -39,12 +39,24 @@ class CardDepositTest extends TestCase
         $cardDeposit = new CardDeposit($clientMock);
 
         $result = $cardDeposit->runTranAuthCapture(
-            'REF123',
-            100.00,
-            '4111111111111111',
-            '12',
-            '2025',
-            '123'
+            $referenceNo = "ORD-2024-001234",  // Unique transaction reference
+            $amount = 1500.75,                 // Amount in currency units
+            $cardNumber = "4111111111111111", // Test Visa card number
+            $expiryMonth = "12",               // Month (01-12)
+            $expiryYear = "2025",              // Year (YYYY)
+            $cvv = "123",                      // 3-digit CVV for Visa/MC
+            $nameOnCard = "JOHN DOE",          // Name as on card
+            $description = "Laptop Purchase",  // Transaction description
+            $currency = 'ZMW',                 // Zambian Kwacha (default)
+            $firstName = "John",
+            $lastName = "Doe",
+            $address = "123 Main Street, Kabulonga",
+            $email = "john.doe@example.com",
+            $phone = "+260971234567",          // Zambian mobile format
+            $city = "Lusaka",
+            $state = "Lusaka Province",
+            $zip_code = "10101",               // Default Zambian postal code
+            $country = "Zambia"               // Default country
         );
 
         $this->assertEquals($expectedResponse, $result);
@@ -62,15 +74,24 @@ class CardDepositTest extends TestCase
         $cardDeposit = new CardDeposit($clientMock);
 
         $result = $cardDeposit->runTranAuthCapture(
-            'REF123',
-            100.00,
-            '4111111111111111',
-            '12',
-            '2025',
-            '123',
-            'John Doe',
-            'john@example.com',
-            '123 Main St'
+            $referenceNo = "ORD-2024-001234",  // Unique transaction reference
+            $amount = 1500.75,                 // Amount in currency units
+            $cardNumber = "4111111111111111", // Test Visa card number
+            $expiryMonth = "12",               // Month (01-12)
+            $expiryYear = "2025",              // Year (YYYY)
+            $cvv = "123",                      // 3-digit CVV for Visa/MC
+            $nameOnCard = "JOHN DOE",          // Name as on card
+            $description = "Laptop Purchase",  // Transaction description
+            $currency = 'ZMW',                 // Zambian Kwacha (default)
+            $firstName = "John",
+            $lastName = "Doe",
+            $address = "123 Main Street, Kabulonga",
+            $email = "john.doe@example.com",
+            $phone = "+260971234567",          // Zambian mobile format
+            $city = "Lusaka",
+            $state = "Lusaka Province",
+            $zip_code = "10101",               // Default Zambian postal code
+            $country = "Zambia"               // Default country
         );
 
         $this->assertEquals($expectedResponse, $result);
@@ -89,12 +110,24 @@ class CardDepositTest extends TestCase
         $this->expectExceptionMessage('Card payment failed');
 
         $cardDeposit->runTranAuthCapture(
-            'REF123',
-            100.00,
-            '4111111111111111',
-            '12',
-            '2025',
-            '123'
+            $referenceNo = "ORD-2024-001234",  // Unique transaction reference
+            $amount = 1500.75,                 // Amount in currency units
+            $cardNumber = "4111111111111111", // Test Visa card number
+            $expiryMonth = "12",               // Month (01-12)
+            $expiryYear = "2025",              // Year (YYYY)
+            $cvv = "123",                      // 3-digit CVV for Visa/MC
+            $nameOnCard = "JOHN DOE",          // Name as on card
+            $description = "Laptop Purchase",  // Transaction description
+            $currency = 'ZMW',                 // Zambian Kwacha (default)
+            $firstName = "John",
+            $lastName = "Doe",
+            $address = "123 Main Street, Kabulonga",
+            $email = "john.doe@example.com",
+            $phone = "+260971234567",          // Zambian mobile format
+            $city = "Lusaka",
+            $state = "Lusaka Province",
+            $zip_code = "10101",               // Default Zambian postal code
+            $country = "Zambia"               // Default country
         );
     }
 }

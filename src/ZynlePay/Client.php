@@ -48,7 +48,7 @@ class Client
             'headers' => [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
-                'User-Agent' => 'ZynlePay-PHP-SDK/1.0',
+                'User-Agent' => 'ZynlePay-PHP-SDK/2.0',
             ],
         ]);
     }

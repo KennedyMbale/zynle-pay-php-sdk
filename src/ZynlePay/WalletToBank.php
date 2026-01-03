@@ -53,6 +53,6 @@ class WalletToBank
             'request_id' => uniqid('bank_status_', true),
         ];
 
-        return $this->client->request('POST', $data);
+        return $this->client->request('POST', $data)['response'];
     }
 }

@@ -41,7 +41,7 @@ $momoDeposit = new MomoDeposit($client);
 // Process a payment
 try {
     $result = $momoDeposit->runBillPayment(
-        senderId: '256700000000',
+        senderId: '09XXXXXXXX',
         referenceNo: uniqid('ref_', true),
         amount: 1000.00,
         description: 'Payment for services'
@@ -81,7 +81,7 @@ $momoDeposit = new MomoDeposit($client);
 
 // Process payment
 $result = $momoDeposit->runBillPayment(
-    senderId: '256700000000',               // Sender's phone number
+    senderId: '09XXXXXXXX',               // Sender's phone number
     referenceNo: uniqid('ref_', true),     // Unique reference number
     amount: 1000.00,                        // Amount in float
     description: 'Payment'                   // Optional description
@@ -152,7 +152,7 @@ $momoWithdraw = new MomoWithdraw($client);
 $result = $momoWithdraw->runPayToEwallet(
     referenceNo: 'REF123456',
     amount: 200.00,
-    receiverId: '256700000000'
+    receiverId: '09XXXXXXXX'
 );
 
 // Check withdrawal status
@@ -219,7 +219,7 @@ All service methods throw `ZynlePay\Exception\ApiException` for API-related erro
 
 ```php
 try {
-    $result = $momoDeposit->runBillPayment('256700000000', 'REF123', 100.00);
+    $result = $momoDeposit->runBillPayment('09XXXXXXXX', 'REF123', 100.00);
 } catch (ZynlePay\Exception\ApiException $e) {
     // Handle API errors (invalid credentials, network issues, etc.)
     error_log("API Error: " . $e->getMessage());
@@ -292,7 +292,7 @@ Run specific test files:
 
 For issues and questions:
 
-- Check the [ZynlePay API Documentation](https://sandbox.zynlepay.com/api/docs)
+- Check the [ZynlePay API Documentation](https://sandbox.zynlepay.com/api/docs) (sign in to access)
 - Review the test files for usage examples
 - Ensure your credentials and configuration are correct
 

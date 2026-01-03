@@ -50,6 +50,6 @@ class MomoDeposit
             'request_id' => uniqid('status_', true),
         ];
 
-        return $this->client->request('POST', $data);
+        return $this->client->request('POST', $data)['response'];
     }
 }

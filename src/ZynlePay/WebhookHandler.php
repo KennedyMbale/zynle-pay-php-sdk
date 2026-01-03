@@ -35,7 +35,7 @@ class WebhookHandler
                 'status' => 'failed',
                 'reference_no' => $referenceNo,
                 'action' => 'cancel_order',
-                'error' => $payload['response_description'] ?? 'Unknown error'
+                'error' => $payload['response']['response_description'] ?? 'Unknown error'
             ];
         }
     }

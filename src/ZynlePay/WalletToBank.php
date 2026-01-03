@@ -6,7 +6,7 @@ namespace ZynlePay;
 
 use ZynlePay\Exception\ApiException;
 
-class BankService
+class WalletToBank
 {
     private Client $client;
 

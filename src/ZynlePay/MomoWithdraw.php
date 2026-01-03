@@ -40,7 +40,7 @@ class MomoWithdraw
             'request_id' => uniqid('ewallet_', true),
         ];
 
-        return $this->client->request('POST', $data);
+        return $this->client->request('POST', $data)['response'];
     }
 
     /**
@@ -56,6 +56,6 @@ class MomoWithdraw
             'request_id' => uniqid('ewallet_status_', true),
         ];
 
-        return $this->client->request('POST', $data);
+        return $this->client->request('POST', $data)['response'];
     }
 }

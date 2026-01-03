@@ -4,7 +4,7 @@ namespace ZynlePay;
 
 use ZynlePay\Exception\ApiException;
 
-class BalanceService
+class CheckBalance
 {
     private Client $client;
 
@@ -25,6 +25,6 @@ class BalanceService
             'method' => 'checkBalance'
         ];
 
-        return $this->client->request('POST', $data);
+        return $this->client->request('POST', $data)['response'];
     }
 }

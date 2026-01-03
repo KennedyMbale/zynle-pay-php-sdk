@@ -2,7 +2,7 @@
 
 namespace ZynlePay;
 
-class CardService
+class CardDeposit
 {
     private Client $client;
 
@@ -24,11 +24,12 @@ class CardService
         string $firstName = 'Zynle',
         string $lastName = 'Test',
         string $address = 'Lusaka',
-        string $email = 'support@zynle.com',
-        string $phone = '0955000679',
+        string $email,
+        string $phone,
         string $city = 'Lusaka',
         string $state = 'Lusaka',
-        string $country = 'ZM'
+        string $zip_code = '10101',
+        string $country = 'ZMB'
     ): array {
         $data = [
             'method' => 'runTranAuthCapture',
@@ -38,11 +39,12 @@ class CardService
             'transaction_id' => uniqid(),
             'amount' => $amount,
             'description' => $description,
+            'currency' => $currency,
             'cardnumber' => str_replace([' ', '-'], '', $cardNumber),
             'expiry_month' => $expiryMonth,
             'expiry_year' => $expiryYear,
             'cvv' => $cvv,
-            'cur' => $currency,
+            'currency' => $currency,
             'first_name' => $firstName,
             'last_name' => $lastName,
             'address' => $address,
@@ -50,9 +52,10 @@ class CardService
             'phone' => $phone,
             'city' => $city,
             'state' => $state,
+            'zip_code' => $zip_code,
             'country' => $country,
         ];
 
-        return $this->client->request('POST', $data);
+        return $this->client->request('POST', $data)['response'];
     }
 }

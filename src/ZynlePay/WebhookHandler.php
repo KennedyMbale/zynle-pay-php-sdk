@@ -7,12 +7,12 @@ class WebhookHandler
     public function handle(array $payload): array
     {
         // Validate the payload
-        if (!isset($payload['response_code']) || !isset($payload['reference_no'])) {
+        if (!isset($payload['response']['response_code']) || !isset($payload['response']['reference_no'])) {
             throw new \InvalidArgumentException('Invalid webhook payload');
         }
 
-        $responseCode = $payload['response_code'];
-        $referenceNo = $payload['reference_no'];
+        $responseCode = $payload['response']['response_code'];
+        $referenceNo = $payload['response']['reference_no'];
 
         // Process based on response code
         if ($responseCode == '100') {

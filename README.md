@@ -32,8 +32,7 @@ $client = new Client(
     apiId: 'your_api_id',
     apiKey: 'your_api_key',
     channel: 'momo',
-    serviceId: '1002',
-    sandbox: true
+    serviceId: '1002'
 );
 
 // Create service instance
@@ -43,7 +42,7 @@ $momoDeposit = new MomoDeposit($client);
 try {
     $result = $momoDeposit->runBillPayment(
         senderId: '256700000000',
-        referenceNo: 'REF123456',
+        referenceNo: uniqid('ref_', true),
         amount: 1000.00,
         description: 'Payment for services'
     );
@@ -82,10 +81,10 @@ $momoDeposit = new MomoDeposit($client);
 
 // Process payment
 $result = $momoDeposit->runBillPayment(
-    senderId: '256700000000',    // Sender's phone number
-    referenceNo: 'REF123456',     // Unique reference number
-    amount: 1000.00,              // Amount in float
-    description: 'Payment'        // Optional description
+    senderId: '256700000000',               // Sender's phone number
+    referenceNo: uniqid('ref_', true),     // Unique reference number
+    amount: 1000.00,                        // Amount in float
+    description: 'Payment'                   // Optional description
 );
 
 // Check payment status
@@ -97,22 +96,25 @@ $status = $momoDeposit->checkPaymentStatus('REF123456');
 Handle credit and debit card payments with full PCI compliance.
 
 ```php
-use ZynlePay\CardDeposit;
+use ZynlePay\MomoDeposit;
+$momoService = new MomoDeposit($client);
 
-$cardDeposit = new CardDeposit($client);
+try {
+    $result = $momoService->runBillPayment(
+        senderId: '09XXXXXXXX',
+        referenceNo: uniqid('ref_', true),
+        amount: 70,
+        description: 'Payment for services'
+    );
 
-// Process card payment
-$result = $cardDeposit->runTranAuthCapture(
-    referenceNo: 'REF123456',
-    amount: 100.00,
-    cardNumber: '4111111111111111',
-    expiryMonth: '12',
-    expiryYear: '2025',
-    cvv: '123',
-    cardHolderName: 'John Doe',        // Optional
-    email: 'john@example.com',         // Optional
-    billingAddress: '123 Main St'      // Optional
-);
+    echo "<h3>".$result['response_description']."</h3>";
+    echo "<p>Transaction ID: " . $result['transaction_id'] . "</p>";
+    echo "<p>Operator: " . $result['operator'] . "</p>";
+    echo "<p>transaction_date: " . $result['transaction_date'] . "</p>";
+
+} catch (ZynlePay\Exception\ApiException $e) {
+    echo "Payment failed: " . $e->getMessage();
+}
 ```
 
 ### WalletToBank - Bank Transfers from Wallet
@@ -126,7 +128,7 @@ $walletToBank = new WalletToBank($client);
 
 // Transfer to bank
 $result = $walletToBank->runPayToBank(
-    referenceNo: 'REF123456',
+    referenceNo: uniqid('ref_', true),
     amount: 500.00,
     description: 'Bank transfer',
     bankName: 'Bank of Example',
@@ -297,4 +299,3 @@ For issues and questions:
 ## License
 
 This SDK is released under the MIT License. See LICENSE file for details.
- 

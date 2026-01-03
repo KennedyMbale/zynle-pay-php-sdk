@@ -6,7 +6,7 @@ namespace ZynlePay;
 
 use ZynlePay\Exception\ApiException;
 
-class MomoService
+class MomoDeposit
 {
     private Client $client;
 

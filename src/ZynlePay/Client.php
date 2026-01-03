@@ -81,7 +81,7 @@ class Client
     /**
      * @throws ApiException
      */
-    public function request(string $method, array $data): array
+    public function request(string $method, array $data, string $endpoint = ''): array
     {
         $payload = [
             'auth' => $this->auth,

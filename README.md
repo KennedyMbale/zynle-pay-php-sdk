@@ -64,7 +64,7 @@ $client = new Client(
     string $apiKey,         // Your API key
     string $channel,        // Payment channel (momo, card, bank, etc.)
     string $serviceId = '1002',  // Service ID (default: '1002')
-    ?bool $sandbox = null   // true for sandbox, false for production, null for auto-detect
+    bool $sandbox = true     // true for sandbox, false for production
 );
 ```
 
@@ -170,7 +170,7 @@ $paymentStatus = new PaymentStatus($client);
 
 // Check payment status
 try {
-    $status = $paymentStatus->checkPaymentStatus('REF123456');
+    $status = $paymentStatus->checkStatus('REF123456');
     echo "Payment status: " . $status['status'];
 } catch (ZynlePay\Exception\ApiException $e) {
     echo "Status check failed: " . $e->getMessage();

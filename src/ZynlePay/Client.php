@@ -11,7 +11,8 @@ use ZynlePay\Exception\InvalidConfigurationException;
 
 class Client
 {
-    private const API_BASE_URL = 'https://sandbox.zynlepay.com/zynlepay/jsonapi';
+    private const SANDBOX_URL = 'https://sandbox.zynlepay.com/zynlepay/jsonapi';
+    private const PRODUCTION_URL = 'https://payments.zynlepay.com/zynlepay/jsonapi/';
 
     private GuzzleClient $httpClient;
     private array $auth;
@@ -26,11 +27,12 @@ class Client
         string $apiKey,
         string $channel,
         string $serviceId = '1002',
+        bool $sandbox = true,
         ?string $baseUrl = null
     ) {
-        $this->validateConfiguration($merchantId, $apiId, $apiKey, $channel, $serviceId);
+        $this->validateConfiguration($merchantId, $apiId, $apiKey, $channel, $serviceId, $sandbox);
 
-        $this->baseUrl = $baseUrl ?? self::API_BASE_URL;
+        $this->baseUrl = $baseUrl ?? ($sandbox ? self::SANDBOX_URL : self::PRODUCTION_URL);
 
         $this->auth = [
             'merchant_id' => $merchantId,
@@ -59,7 +61,8 @@ class Client
         string $apiId,
         string $apiKey,
         string $channel,
-        string $serviceId
+        string $serviceId,
+        bool $sandbox
     ): void {
         if (empty($merchantId)) {
             throw new InvalidConfigurationException('Merchant ID cannot be empty');

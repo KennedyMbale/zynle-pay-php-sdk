@@ -11,7 +11,7 @@ use ZynlePay\Exception\InvalidConfigurationException;
 
 class Client
 {
-    private const API_BASE_URL = 'https://www.zynlepay.com/zynlepay/jsonapi';
+    private const API_BASE_URL = 'https://sandbox.zynlepay.com/zynlepay/jsonapi';
 
     private GuzzleClient $httpClient;
     private array $auth;
